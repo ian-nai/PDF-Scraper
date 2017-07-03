@@ -9,6 +9,12 @@ import io
 import sys
 import os
 import re
+import nltk
+import string
+from nltk.corpus.reader.plaintext import PlaintextCorpusReader
+from nltk import FreqDist
+from nltk import tokenize
+from string import ascii_letters, digits, punctuation, whitespace
 
 def scraper():
      print "Welcome! First, enter the name of the PDF file you would like to scrape."
@@ -48,21 +54,62 @@ def scraper():
                if prompt3 == "y":
                    scraper()
                if prompt3 == "n":
-                   print("Bye!")
-                   exit(0)
+                   prompt4 = raw_input("Would you like to split the text into separate words? Type 'y' for yes and 'n' for no.")
+                   if prompt4 == "y":
+                           sep_words()
+                   if prompt4 == "n":
+                           print("Bye!")
+                           exit(0)
         if prompt == "q":
                print("Bye!")
                exit(0)
         else:
                print("Please enter a valid input.")
      if save == "n":
-        if prompt2 == "n":
              print "Bye!"
              exit(0)
-        else:
+     else:
              print("Please enter a valid input.")
-      
-     
+                
+
+def sep_words():
+
+    print "Please enter the name of the text file you'd like to work with in the format [filename].txt. To use the text you just scraped, type 'scrape.txt'."
+
+    text1 = raw_input("Filename: ")
+    with open(text1, 'r') as file:
+        f_text = file.read()
+        tokenizer = nltk.word_tokenize
+        tokens = tokenizer(f_text)
+        for elem in tokens:
+            print elem 
+        
+    save_sep_lines = raw_input("Would you like to save the words as 'words.txt'? Type 'y' for yes and 'n' for no.")
+    if save_sep_lines == "y":
+        text_file = open("words.txt", "w")
+        for words in tokens:
+            wordsplit = words.split()
+            for word in wordsplit:
+                text_file.write(str(word + '\n'))
+        text_file.close()
+    else:    
+        start_over = raw_input("Would you like to run the program again? Type 'y' for yes and 'n' for no.")
+        if start_over == "y":
+            scraper()
+        if start_over == "n":
+            print "Bye!"
+            exit(0)
+        else: 
+            print("Please enter a valid input.")
+            
+    start_over = raw_input("Would you like to run the program again? Type 'y' for yes and 'n' for no.")
+    if start_over == "y":
+        scraper()
+    if start_over == "n":
+        print "Bye!"
+        exit(0)
+    else: 
+        print("Please enter a valid input.")
+        
 scraper()
-    
                 
