@@ -5,7 +5,7 @@ Standalone versions of the part of speech grapher and the date scraper can be fo
 
 ## To Use:
 * Download the scripts in the "scripts" folder
-* Put the PDF files you'd like to scrape in the same folder
+* Place the PDF files you'd like to scrape in the same folder as the scripts
 * Run pdf_scraper.py
 
 ## Dependencies
