@@ -26,7 +26,7 @@ def date_scraper():
         text_file1.close()
         pdf_again = raw_input("Save successful! Would you like to scrape another PDF?")
         if pdf_again == "y":
-            os.system("python pdf_scraper_2.py")
+            os.system("python pdf_scraper.py")
             exit(0)
         if pdf_again == "n":
             print "Bye!"
