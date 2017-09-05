@@ -9,12 +9,6 @@ import io
 import sys
 import os
 import re
-import nltk
-import string
-from nltk.corpus.reader.plaintext import PlaintextCorpusReader
-from nltk import FreqDist
-from nltk import tokenize
-from nltk import word_tokenize
 
 
 
